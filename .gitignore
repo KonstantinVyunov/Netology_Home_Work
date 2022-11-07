@@ -1,2 +1,4 @@
 #EXTENTIONS
 *.txt
+.vs
+x64/
