@@ -5,10 +5,8 @@ int** readFile(int& length_1, int& length_2) {
 	int** array = nullptr;
 	int arr_length[2] = { 0, 0 };
 	std::ifstream file("input.txt");
-	if (!file.is_open()) {
 		std::cout << "No \"input.txt\" file found!";
-	}
-	else {
+	} else {
 		array = new int* [2];
 		for (int i = 0; i < 2; ++i) {
 			file >> arr_length[i];
