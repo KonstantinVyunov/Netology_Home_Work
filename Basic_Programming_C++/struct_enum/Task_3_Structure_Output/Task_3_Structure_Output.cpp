@@ -2,8 +2,8 @@
 #include <iostream>
 
 struct Address {
-	std::string City;
-	std::string Street;
+	std::string City = { "Moscow" };
+	std::string Street = {};
 	int Building_Num = 0;
 	int Flat_Num = 0;
 	int Index = 0;
@@ -34,12 +34,10 @@ void printAddress(const Address& address) {
 }
 
 int main(int argc, char** argv) {
+	
 	Address address;
-
 	getAddress(address);
-
 	std::cout << std::endl;
-
 	printAddress(address);
 
 	return 0;
