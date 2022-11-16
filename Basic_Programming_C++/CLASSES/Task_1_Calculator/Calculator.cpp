@@ -5,42 +5,13 @@
 
 class Calculator {
 	public:
-		void getNums() {
-			std::cout << "Enter the 1st number: ";
-			while (std::cin >> num_1 && set_num1(num_1)) {
-				std::cout << "The number must distinguish from \"0\"!" << std::endl;
-				std::cout << "Enter the 1st number again: ";
-			}
-			
-			std::cout << "Enter the 2nd number: ";
-			while (std::cin >> num_2 && set_num1(num_2)) {
-				std::cout << "The number must distinguish from \"0\"!" << std::endl;
-				std::cout << "Enter the 2nd number again: ";
-			}
+		double num_1;
+		double num_2;
 
-			return;
+		Calculator(double num_1, double num_2) {
+			this->num_1 = num_1;
+			this->num_2 = num_2;
 		}
-
-		void outputCalculations() {
-			std::cout.width(3);
-			std::cout << num_1 << " + " << num_2 << " = " << add() << std::endl;
-			std::cout.width(3);
-			std::cout << num_1 << " - " << num_2 << " = " << subtract_1_2() << std::endl;
-			std::cout.width(3);
-			std::cout << num_2 << " + " << num_1 << " = " << subtract_2_1() << std::endl;
-			std::cout.width(3);
-			std::cout << num_1 << " * " << num_2 << " = " << multiply() << std::endl;
-			std::cout.width(3);
-			std::cout << num_1 << " / " << num_2 << " = " << divide_1_2() << std::endl;
-			std::cout.width(3);
-			std::cout << num_2 << " / " << num_1 << " = " << divide_2_1() << std::endl;
-
-			return;
-		}
-
-	private:
-		double num_1 = 0;
-		double num_2 = 0;
 
 		double add() {
 			return (num_1 + num_2);
@@ -66,23 +37,64 @@ class Calculator {
 			return (num_2 / num_1);
 		}
 
-		bool set_num1(double num_1) {
-			return (num_1 != 0 ? false : true);
+		bool set_num1(double user_num_1) {
+			if (user_num_1 != 0) {
+				this->num_1 = user_num_1;
+				return false;
+			}
+			return true;
 		}
 
-		bool set_num2(double num_2) {
-			return (num_2 != 0 ? false : true);
+		bool set_num2(double user_num_2) {
+			if (user_num_2 != 0) {
+				this->num_2 = user_num_2;
+				return false;
+			}
+			return true;
 		}
 };
 
+void setNums(Calculator &calculator) {
+	std::cout << "Enter the 1st number: ";
+	double user_num_1 = 0.0;
+	while (std::cin >> user_num_1 && calculator.set_num1(user_num_1)) {
+		std::cout << "The number must distinguish from \"0\"!" << std::endl;
+		std::cout << "Enter the 1st number again: ";
+	}
+
+	std::cout << "Enter the 2nd number: ";
+	double user_num_2 = 0.0;
+	while (std::cin >> user_num_2 && calculator.set_num2(user_num_2)) {
+		std::cout << "The number must distinguish from \"0\"!" << std::endl;
+		std::cout << "Enter the 2nd number again: ";
+	}
+	return;
+}
+
+void getCalculations(Calculator &calculator) {
+	std::cout.width(3);
+	std::cout << calculator.num_1 << " + " << calculator.num_2 << " = " << calculator.add() << std::endl;
+	std::cout.width(3);
+	std::cout << calculator.num_1 << " - " << calculator.num_2 << " = " << calculator.subtract_1_2() << std::endl;
+	std::cout.width(3);
+	std::cout << calculator.num_2 << " + " << calculator.num_1 << " = " << calculator.subtract_2_1() << std::endl;
+	std::cout.width(3);
+	std::cout << calculator.num_1 << " * " << calculator.num_2 << " = " << calculator.multiply() << std::endl;
+	std::cout.width(3);
+	std::cout << calculator.num_1 << " / " << calculator.num_2 << " = " << calculator.divide_1_2() << std::endl;
+	std::cout.width(3);
+	std::cout << calculator.num_2 << " / " << calculator.num_1 << " = " << calculator.divide_2_1() << std::endl;
+	return;
+}
+
 int main(int argc, char** argv) {
 
-	Calculator calculator;
+	Calculator calculator = {0, 0};
 
 	while (true) {
-		calculator.getNums();
+		setNums(calculator);
 		std::cout << std::endl << "There is a list of all math manipulations:" << std::endl;
-		calculator.outputCalculations();
+		getCalculations(calculator);
 		std::cout << std::endl;
 	}
 
