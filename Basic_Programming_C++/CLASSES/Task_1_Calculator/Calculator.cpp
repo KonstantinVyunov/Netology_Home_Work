@@ -4,10 +4,10 @@
 #include <iostream>
 
 class Calculator {
-	public:
+	private:
 		double num_1;
 		double num_2;
-
+	public:
 		Calculator(double num_1, double num_2) {
 			this->num_1 = num_1;
 			this->num_2 = num_2;
@@ -52,6 +52,14 @@ class Calculator {
 			}
 			return true;
 		}
+
+		double get_num1() {
+			return this->num_1;
+		}
+
+		double get_num2() {
+			return this->num_2;
+		}
 };
 
 void setNums(Calculator &calculator) {
@@ -73,17 +81,17 @@ void setNums(Calculator &calculator) {
 
 void getCalculations(Calculator &calculator) {
 	std::cout.width(3);
-	std::cout << calculator.num_1 << " + " << calculator.num_2 << " = " << calculator.add() << std::endl;
+	std::cout << calculator.get_num1() << " + " << calculator.get_num2() << " = " << calculator.add() << std::endl;
 	std::cout.width(3);
-	std::cout << calculator.num_1 << " - " << calculator.num_2 << " = " << calculator.subtract_1_2() << std::endl;
+	std::cout << calculator.get_num1() << " - " << calculator.get_num2() << " = " << calculator.subtract_1_2() << std::endl;
 	std::cout.width(3);
-	std::cout << calculator.num_2 << " + " << calculator.num_1 << " = " << calculator.subtract_2_1() << std::endl;
+	std::cout << calculator.get_num2() << " + " << calculator.get_num1() << " = " << calculator.subtract_2_1() << std::endl;
 	std::cout.width(3);
-	std::cout << calculator.num_1 << " * " << calculator.num_2 << " = " << calculator.multiply() << std::endl;
+	std::cout << calculator.get_num1() << " * " << calculator.get_num2() << " = " << calculator.multiply() << std::endl;
 	std::cout.width(3);
-	std::cout << calculator.num_1 << " / " << calculator.num_2 << " = " << calculator.divide_1_2() << std::endl;
+	std::cout << calculator.get_num1() << " / " << calculator.get_num2() << " = " << calculator.divide_1_2() << std::endl;
 	std::cout.width(3);
-	std::cout << calculator.num_2 << " / " << calculator.num_1 << " = " << calculator.divide_2_1() << std::endl;
+	std::cout << calculator.get_num2() << " / " << calculator.get_num1() << " = " << calculator.divide_2_1() << std::endl;
 	return;
 }
 

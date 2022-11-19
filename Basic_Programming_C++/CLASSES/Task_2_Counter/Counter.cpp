@@ -21,7 +21,7 @@ public:
 		--this->score;
 		return;
 	}
-	int printScore() {
+	int getScore() {
 		return this->score;
 	}
 };
@@ -88,7 +88,7 @@ void manageScore(Counter* counter) {
 				counter->decreasScore();
 				break;
 			case Operator::equal:
-				std::cout << "Counter: " << counter->printScore() << std::endl;
+				std::cout << "Counter: " << counter->getScore() << std::endl;
 				break;
 			case Operator::over:
 				break;
