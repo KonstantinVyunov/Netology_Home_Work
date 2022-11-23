@@ -1,4 +1,4 @@
-// Program takes addresses from the "in.txt" file, reorder them, and saves into the "out.txt" file.
+// Program takes addresses from the "in.txt" file, sort them, and saves into the "out.txt" file.
 
 #include <iostream>
 #include <fstream>
