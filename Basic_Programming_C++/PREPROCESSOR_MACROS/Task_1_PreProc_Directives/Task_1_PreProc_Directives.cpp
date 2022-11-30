@@ -1,14 +1,14 @@
 #include <iostream>
 #define MODE (1)
-#define ADD(num_1, num_2) ((num_1) + (num_2))
+#ifndef MODE
+#error Error! MODE undefined!
+#endif
 
+int add(int num_1, int num_2) {
+	return num_1 + num_2;
+}
 
 int main() {
-
-	#ifndef MODE
-		#error Error! MODE undefined!
-	#endif
-
 	#if MODE == (0)
 		std::cout << "Weather is good!" << std::endl;
 	#elif MODE == (1)
@@ -18,7 +18,7 @@ int main() {
 		std::cin >> num_1;
 		std::cout << "Enter num 2: ";
 		std::cin >> num_2;
-		std::cout << "Sum: " << ADD(num_1, num_2) << std::endl;
+		std::cout << "Sum: " << add(num_1, num_2) << std::endl;
 	#else
 		std::cout << "Weather is unknown ..." << std::endl;
 	#endif
