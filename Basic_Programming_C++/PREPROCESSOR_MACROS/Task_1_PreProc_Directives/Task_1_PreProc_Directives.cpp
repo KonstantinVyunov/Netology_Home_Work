@@ -3,10 +3,11 @@
 #ifndef MODE
 #error Error! MODE undefined!
 #endif
-
+#if MODE == 1
 int add(int num_1, int num_2) {
 	return num_1 + num_2;
 }
+#endif
 
 int main() {
 	#if MODE == (0)
