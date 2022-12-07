@@ -1,61 +1,47 @@
-#include <string>
-#include "triangle.h"
-
-Triangle::Triangle(
-	std::string figure_name,
-	int length_a, int length_b, int length_c,
-	int angl_A, int angl_B, int angl_C)
-{
-	this->Triangle::setFigureName(figure_name);
-	this->length_a = length_a;
-	this->length_b = length_b;
-	this->length_c = length_c;
-	this->angle_A = angl_A;
-	this->angle_B = angl_B;
-	this->angle_C = angl_C;
-}
+#include "TriangleError.h"
+#include "Triangle.h"
+#include <iostream>
 
 Triangle::Triangle(
 	int length_a, int length_b, int length_c,
-	int angl_A, int angl_B, int angl_C)
-	: Triangle(
-		"Triangle",
-		length_a, length_b, length_c,
-		angl_A, angl_B, angl_C)
-{}
+	int angle_A, int angle_B, int angle_C)
+	{
+		setFigureName("Triangle");
+		setNumSides(3);
+		setNumAngles(3);
+		setLengthA(length_a);
+		setLengthB(length_b);
+		setLengthC(length_c);
+		setAngleA(angle_A);
+		setAngleB(angle_B);
+		setAngleC(angle_C);
+		if ((angle_A + angle_B + angle_C) != 180) {
+			std::cout << getFigureName()
+				<< " (sides " << ' ' << getNumSides() << " - " << getLengthA() << ", " << getLengthB() << ", " << getLengthC() << "; "
+				<< "angles " << getNumAngles() << " - " << getAngleA() << ", " << getAngleB() << ", " << getAngleC() << ") is NOT created. ";
+			throw TriangleError();
+		}
+	}
 
-std::string Triangle::printSides() const {
-	return std::to_string(Triangle::get_length_a()) + ' '
-		 + std::to_string(Triangle::get_length_b()) + ' '
-		 + std::to_string(Triangle::get_length_c());
-}
+	int Triangle::getLengthA() const { return this->length_a; }
+	int Triangle::getLengthB() const { return this->length_b; }
+	int Triangle::getLengthC() const { return this->length_c; }
+	int Triangle::getAngleA() const { return this->angle_A; }
+	int Triangle::getAngleB() const { return this->angle_B; }
+	int Triangle::getAngleC() const { return this->angle_C; }
 
-std::string Triangle::printAngles() const {
-	return std::to_string(Triangle::get_angle_A()) + ' '
-		 + std::to_string(Triangle::get_angle_B()) + ' '
-		 + std::to_string(Triangle::get_angle_C());
-}
+	const void Triangle::setLengthA(int length_a_) { this->length_a = length_a_; }
+	const void Triangle::setLengthB(int length_b_) { this->length_b = length_b_; }
+	const void Triangle::setLengthC(int length_c_) { this->length_c = length_c_; }
+	const void Triangle::setAngleA(int angle_A_) { this->angle_A = angle_A_; }
+	const void Triangle::setAngleB(int angle_B_) { this->angle_B = angle_B_; }
+	const void Triangle::setAngleC(int angle_C_) { this->angle_C = angle_C_; }
 
-int Triangle::get_length_a() const {
-	return this->length_a;
-}
+	void Triangle::printSides() const {
+		std::cout << getNumSides() << " - " << getLengthA() << ", " << getLengthB() << ", " << getLengthC();
+	}
+	void Triangle::printAngles() const {
+		std::cout << getNumAngles() << " - " << getAngleA() << ", " << getAngleB() << ", " << getAngleC();
+	}
 
-int Triangle::get_length_b() const {
-	return this->length_b;
-}
-
-int Triangle::get_length_c() const {
-	return this->length_c;
-}
-
-int Triangle::get_angle_A() const {
-	return this->angle_A;
-}
-
-int Triangle::get_angle_B() const {
-	return this->angle_B;
-}
-
-int Triangle::get_angle_C() const {
-	return this->angle_C;
-}
+Triangle::~Triangle() = default;

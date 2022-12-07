@@ -330,6 +330,6 @@ int main(int argc, char** argv) {
 	figure_.print_figure_info(&square_);
 	std::cout << std::endl;
 	figure_.print_figure_info(&rhombus_);
-
+	__LINE__;
 	return 0;
 }

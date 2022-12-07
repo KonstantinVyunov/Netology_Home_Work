@@ -1,6 +1,5 @@
 #include <string>
 #include "triangle.h"
-#include "figure.h"
 
 int length_a{ 0 }, length_b{ 0 }, length_c{ 0 };
 int angle_A{ 0 }, angle_B{ 0 }, angle_C{ 0 };

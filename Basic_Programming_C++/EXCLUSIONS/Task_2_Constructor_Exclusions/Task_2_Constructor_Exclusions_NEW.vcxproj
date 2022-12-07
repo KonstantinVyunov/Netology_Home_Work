@@ -127,7 +127,49 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EquilateralTriangle.cpp" />
+    <ClCompile Include="EquilateralTriangleError.cpp" />
+    <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="GenericError.cpp" />
+    <ClCompile Include="IsoscelesTriangle.cpp" />
+    <ClCompile Include="IsoscelesTriangleError.cpp" />
+    <ClCompile Include="Parallelogram.cpp" />
+    <ClCompile Include="ParallelogramError.cpp" />
+    <ClCompile Include="Quadrangle.cpp" />
+    <ClCompile Include="QuadrangleError.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="RectangleError.cpp" />
+    <ClCompile Include="Rhombus.cpp" />
+    <ClCompile Include="RhombusError.cpp" />
+    <ClCompile Include="RightTriangle.cpp" />
+    <ClCompile Include="RightTriangleError.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="SquareError.cpp" />
     <ClCompile Include="Task_2_Constructor_Exclusions_NEW.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="TriangleError.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EquilateralTriangle.h" />
+    <ClInclude Include="EquilateralTriangleError.h" />
+    <ClInclude Include="Figure.h" />
+    <ClInclude Include="GenericError.h" />
+    <ClInclude Include="IsoscelesTriangle.h" />
+    <ClInclude Include="IsoscelesTriangleError.h" />
+    <ClInclude Include="Parallelogram.h" />
+    <ClInclude Include="ParallelogramError.h" />
+    <ClInclude Include="Quadrangle.h" />
+    <ClInclude Include="QuadrangleError.h" />
+    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="RectangleError.h" />
+    <ClInclude Include="Rhombus.h" />
+    <ClInclude Include="RhombusError.h" />
+    <ClInclude Include="RightTriangle.h" />
+    <ClInclude Include="RightTriangleError.h" />
+    <ClInclude Include="Square.h" />
+    <ClInclude Include="SquareError.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="TriangleError.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

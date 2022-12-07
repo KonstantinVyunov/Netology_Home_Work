@@ -1,14 +1,11 @@
 #pragma once
-#include "isoscelestriangle.h"
+#include "IsoscelesTriangle.h"
 
 class EquilateralTriangle : public IsoscelesTriangle {
-protected:
-	EquilateralTriangle(
-		std::string figure_name,
-		int length_a, int length_b, int length_c,
-		int angl_A, int angl_B, int angl_C);
 public:
 	EquilateralTriangle(
 		int length_a, int length_b, int length_c,
-		int angl_A, int angl_B, int angl_C);
+		int angle_A, int angle_B, int angle_C);
+
+	~EquilateralTriangle();
 };

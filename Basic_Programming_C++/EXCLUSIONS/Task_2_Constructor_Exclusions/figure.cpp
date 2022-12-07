@@ -1,24 +1,18 @@
+#include "Figure.h"
 #include <iostream>
-#include <string>
-#include "figure.h"
-
-void Figure::setFigureName(std::string name) {
-	this->figure_name = name;
-	return;
-}
-
-std::string Figure::getFigureName() const {
-	return this->figure_name;
-}
-
-std::string Figure::printSides() const { return "0"; }
-std::string Figure::printAngles() const { return "0"; }
 
 Figure::Figure() = default;
 
-void Figure::print_figure_info(Figure* figure) {
-	std::cout << "Figure: " << figure->getFigureName() << std::endl;
-	std::cout << "Sides: " << figure->printSides() << std::endl;
-	std::cout << "Angles: " << figure->printAngles() << std::endl;
-	return;
-}
+const void Figure::setFigureName(std::string name) { this->figure_name = name; }
+std::string Figure::getFigureName() const { return this->figure_name; }
+
+const void Figure::setNumSides(int num_sides) { this->num_sides = num_sides; }
+int Figure::getNumSides() const { return this->num_sides; }
+
+const void Figure::setNumAngles(int num_angles) { this->num_angles = num_angles; }
+int Figure::getNumAngles() const { return this->num_angles; }
+
+void Figure::printSides() const { std::cout << num_sides; }
+void Figure::printAngles() const { std::cout << num_angles; }
+
+Figure::~Figure() = default;

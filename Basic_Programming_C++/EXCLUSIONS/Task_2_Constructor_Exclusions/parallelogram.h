@@ -1,14 +1,11 @@
 #pragma once
-#include "quadrangle.h"
+#include "Quadrangle.h"
 
 class Parallelogram : public Quadrangle {
-protected:
-	Parallelogram(
-		std::string figure_name,
-		int length_a, int length_b, int length_c, int length_d,
-		int angl_A, int angl_B, int angl_C, int angl_D);
 public:
 	Parallelogram(
 		int length_a, int length_b, int length_c, int length_d,
-		int angl_A, int angl_B, int angl_C, int angl_D);
+		int angle_A, int angle_B, int angle_C, int angle_D);
+
+	~Parallelogram();
 };

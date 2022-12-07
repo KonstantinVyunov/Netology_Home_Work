@@ -1,20 +1,21 @@
-#include "isoscelestriangle.h"
-#include "triangle.h"
+#include "IsoscelesTriangleError.h"
+#include "IsoscelesTriangle.h"
+#include <iostream>
 
 IsoscelesTriangle::IsoscelesTriangle(
-	std::string figure_name,
-	int length_a, int length_b, int length_c,
-	int angl_A, int angl_B, int angl_C)
-	: Triangle(
-		figure_name, length_a, length_b,
-		length_c, angl_A, angl_B, angl_C)
-{}
+		int length_a, int length_b, int length_c,
+		int angle_A, int angle_B, int angle_C)
+		: Triangle(
+			length_a, length_b, length_c,
+			angle_A, angle_B, angle_C)
+{
+	setFigureName("IsoscelesTriangle");
+	if (!((getAngleA() == getAngleC()) && (getLengthA() == getLengthC()))) {
+		std::cout << getFigureName()
+			<< " (sides " << getLengthA() << ", " << getLengthB() << ", " << getLengthC() << "; "
+			<< "angles " << getAngleA() << ", " << getAngleB() << ", " << getAngleC() << ") is NOT created. ";
+		throw IsoscelesTriangleError();
+	}
+}
 
-IsoscelesTriangle::IsoscelesTriangle(
-	int length_a, int length_b, int length_c,
-	int angl_A, int angl_B, int angl_C)
-	: IsoscelesTriangle(
-		"Isoscelestriangle",
-		length_a, length_b, length_c,
-		angl_A, angl_B, angl_C)
-{}
+IsoscelesTriangle::~IsoscelesTriangle() = default;
