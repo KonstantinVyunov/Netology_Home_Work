@@ -73,11 +73,7 @@ public:
 		return fractionReduction(sub);
 	}
 
-	const Fraction& operator* (const Fraction& r_value) {
-		Fraction mult = { (this->numerator * r_value.numerator),
-			(this->denominator * r_value.denominator) };
-		return fractionReduction(mult);
-	}
+	friend const Fraction& operator* (const Fraction& l_value, const Fraction& r_value);
 
 	const Fraction& operator/ (const Fraction& r_value) {
 		Fraction div = { this->numerator * r_value.denominator,
@@ -85,33 +81,37 @@ public:
 		return fractionReduction(div);
 	}
 
-	Fraction operator++ () const {
-		Fraction value = { (this->numerator + this->denominator), this->denominator };
-		return value;
+	const Fraction operator++ () {
+		return {this->numerator += this->denominator, this->denominator};
 	}
 
-	Fraction operator-- () const {
-		Fraction value = { (this->numerator - this->denominator), this->denominator };
-		return value;
+	const Fraction operator-- () {
+		return { this->numerator -= this->denominator, this->denominator };
 	}
 
-	Fraction operator++ (int) {
-		Fraction temp_value = *this;
+	const Fraction operator++ (int) {
+		Fraction temp = *this;
 		++(*this);
-		return temp_value;
+		return temp;
 	}
 
 	Fraction operator-- (int) {
-		Fraction temp_value = *this;
+		Fraction temp = *this;
 		--(*this);
-		return temp_value;
+		return temp;
 	}
 
 	~Fraction() = default;
 };
 
-std::ostream& operator<< (std::ostream& output, Fraction& fraction_) {
-	output << fraction_.numerator << '/' << fraction_.denominator;
+const Fraction& operator* (const Fraction& l_value, const Fraction& r_value) {
+	Fraction mult = { (l_value.numerator * r_value.numerator),
+		(l_value.denominator * r_value.denominator) };
+	return mult.fractionReduction(mult);
+}
+
+std::ostream& operator<< (std::ostream& output, Fraction& fraction) {
+	output << fraction.numerator << '/' << fraction.denominator;
 	return output;
 }
 
@@ -144,10 +144,14 @@ int main(int argc, char** argv) {
 	std::cout << f1 << " * " << f2 << " = " << (result = (f1 * f2)) << std::endl;
 	std::cout << f1 << " / " << f2 << " = " << (result = (f1 / f2)) << std::endl;
 	std::cout << std::endl;
-	std::cout << "++" << f1 << " * " << f2 << " = " << (result = (++f1) * f2) << std::endl;
-	std::cout << "Fraction value 1 = " << (result = ++f1) << std::endl;
-	std::cout << f1 << "-- * " << f2 << " = " << (result = (f1--) * f2) << std::endl;
-	std::cout << "Fraction value 1 = " << (result = f1--) << std::endl;
+
+	std::cout << "++" << f1 << " * " << f2 << " = ";
+	std::cout << (result = (++f1) * f2) << std::endl;
+	std::cout << "Fraction value 1 = " << (f1) << std::endl;
+
+	std::cout << f1 << "-- * " << f2 << " = ";
+	std::cout << (result = (f1--) * f2) << std::endl;
+	std::cout << "Fraction value 1 = " << (f1) << std::endl;
 
 	return 0;
 }
