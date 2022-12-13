@@ -1,0 +1,5 @@
+B:/Git_Repositories/Netology_Home_Work/Basic_Programming_C++/CMAKE/Task_2_A_Bit_Harder/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+B:/Git_Repositories/Netology_Home_Work/Basic_Programming_C++/CMAKE/Task_2_A_Bit_Harder/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+B:/Git_Repositories/Netology_Home_Work/Basic_Programming_C++/CMAKE/Task_2_A_Bit_Harder/out/build/x64-Debug/src/CMakeFiles/figures.dir
+B:/Git_Repositories/Netology_Home_Work/Basic_Programming_C++/CMAKE/Task_2_A_Bit_Harder/out/build/x64-Debug/src/CMakeFiles/edit_cache.dir
+B:/Git_Repositories/Netology_Home_Work/Basic_Programming_C++/CMAKE/Task_2_A_Bit_Harder/out/build/x64-Debug/src/CMakeFiles/rebuild_cache.dir

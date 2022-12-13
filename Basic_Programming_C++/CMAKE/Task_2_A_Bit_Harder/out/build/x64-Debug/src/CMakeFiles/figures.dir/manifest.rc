@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "B:/Git_Repositories/Netology_Home_Work/Basic_Programming_C++/CMAKE/Task_2_A_Bit_Harder/out/build/x64-Debug/src/CMakeFiles/figures.dir/embed.manifest"
