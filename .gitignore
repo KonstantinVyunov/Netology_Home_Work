@@ -36,8 +36,9 @@
 *.app
 
 # CMake
-out/**
-build/**
+x64/
+out/
+build/
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
