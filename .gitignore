@@ -1,6 +1,7 @@
 # My EXTENTIONS
 .vs/
 .git/
+out.txt
 
 # Created by https://www.toptal.com/developers/gitignore/api/c++,cmake,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++,cmake,visualstudio
@@ -40,7 +41,8 @@
 *.app
 
 ### CMake ###
-/out
+out/
+build/
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles

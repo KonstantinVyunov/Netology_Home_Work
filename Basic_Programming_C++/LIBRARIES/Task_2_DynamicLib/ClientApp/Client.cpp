@@ -1,4 +1,4 @@
-#include "Leaver.h"
+#include "..\DynamicLibrary\Leaver.h"
 
 int main(int argc, char** argv) {
 	Leaver bye;
