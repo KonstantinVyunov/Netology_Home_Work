@@ -21,4 +21,4 @@ add_executable (Exe HierarchyClient.cpp)
 
 target_link_libraries (Exe Lib)
 
-#target_compile_definitions (Lib DYNAMICLIB_EXPORTS)
+target_compile_definitions (Lib PRIVATE DYNAMICLIB_EXPORTS)
