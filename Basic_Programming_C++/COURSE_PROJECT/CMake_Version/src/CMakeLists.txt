@@ -15,7 +15,7 @@ set (d_libraries
 		Eagle.h Eagle.cpp 
 		Broom.h Broom.cpp 
 )
-#set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 add_library (DYNAMIC_LIB SHARED ${d_libraries})
 
 add_library (STATIC_LIB STATIC Functions.cpp Functions.h)

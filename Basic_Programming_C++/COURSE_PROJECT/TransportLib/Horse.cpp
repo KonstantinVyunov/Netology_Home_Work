@@ -20,7 +20,7 @@ double Horse::calcTime(int distance) {
 		return (one_range_time + first_resting_time + second_resting_time);
 	}
 	else {
-		return (one_range_time + other_resting_time * (one_range_time / getMovingTime() - 3) + first_resting_time + second_resting_time);
+		return (one_range_time + first_resting_time + second_resting_time + other_resting_time * (ceil(distance / (getSpeed() * getMovingTime())) - 3));
 	}
 };
 

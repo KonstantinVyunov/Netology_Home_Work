@@ -24,6 +24,7 @@
     <ProjectGuid>{130fbefe-255d-47cc-b88d-e9446f7f6c18}</ProjectGuid>
     <RootNamespace>DLib</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>TransportLib</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

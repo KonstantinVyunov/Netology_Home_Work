@@ -12,7 +12,7 @@ double Centaur::calcTime(int distance) {
 		return one_range_time;
 	}
 	else {
-		return one_range_time + resting_time * (one_range_time / getMovingTime() - 1);
+		return one_range_time + resting_time * (ceil(distance / (getSpeed() * getMovingTime())) - 1);
 	}
 };
 

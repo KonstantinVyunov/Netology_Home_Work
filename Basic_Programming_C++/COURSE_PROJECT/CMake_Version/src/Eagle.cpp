@@ -5,7 +5,7 @@ Eagle::Eagle() : AirVehicle("Eagle", 8) {
 }
 
 double Eagle::calcTime(int distance) {
-	return (distance - (distance * distance_reduction_factor) / getSpeed());
+	return (distance * (1 - distance_reduction_factor) / getSpeed());
 };
 
 Eagle::~Eagle() = default;

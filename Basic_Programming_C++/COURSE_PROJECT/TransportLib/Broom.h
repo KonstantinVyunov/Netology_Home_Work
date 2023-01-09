@@ -2,7 +2,7 @@
 
 #include "AirVehicle.h"
 
-class Broom : public AirVehicle { // Метла
+class Broom : public AirVehicle {
 private:
 public:
 	double distance_reduction_factor_each_1000;
