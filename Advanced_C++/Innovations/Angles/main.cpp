@@ -1,14 +1,15 @@
 #include <cmath>
 #include <vector>
 #include <iostream>
+#include <iomanip>
 #include <functional>
 
 const double Pi = 3.1415926;
 
-void printInput(const std::vector<int>& angles) {
+void printAngles(const std::vector<int>& angles) {
 	for (const auto& angle : angles) {
 		if (angle != angles.back()) {
-			std::cout << angle << " deg (" << (angle * Pi / 180) << " rad); ";
+			std::cout << angle << " deg (" << (angle * Pi / 180) << " rad), ";
 		}
 		else {
 			std::cout << angle << " deg (" << (angle * Pi / 180) << " rad). ";
@@ -16,40 +17,37 @@ void printInput(const std::vector<int>& angles) {
 	}
 }
 
-void printOutput(const std::vector<int>& angles) {
-
-	std::function<double(int&)> coses = [](const int& angle) {
-		std::cout << "cos ";
-		return std::cos(angle);
-	};
-	std::function<double(int&)>  sins = [](const int& angle) {
-		std::cout << "sin ";
-		return std::sin(angle);
-	};
-
-	std::vector<std::function<double(int&)>> functions = { coses, sins };
-
+void printOutput(const std::vector<int>& angles, std::vector<std::function<void(int)>> functions) {
 	for (const auto& angle : angles) {
-		std::cout << angle << ": ";
+		std::cout << angle << " deg : ";
 		for (const auto& function : functions) {
 			function(angle);
 		}
 		std::cout << std::endl;
 	}
-	};
+};
 
 
 int main(int argc, char** argv) {
 
 	std::vector<int> angles = { 30, 60, 90 };
 
-	std::cout << "Input: ";
-	printInput(angles);
+	std::cout << "GIVEN ANGLES: ";
+	printAngles(angles);
 
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
 
-	std::cout << "Output:\n";
-	printOutput(angles);
+	std::function<void(int)> cosine = [](const int& angle) -> void {
+		std::cout << std::setprecision(6) << "cos = " << std::cos(angle * Pi / 180) << '\t';
+	};
+	std::function<void(int)> sine = [](const int& angle) -> void {
+		std::cout << std::setprecision(6) << "sin = " << std::sin(angle * Pi / 180) << '\t';
+	};
+
+	auto functions = { sine, cosine };
+
+	std::cout << "OUTPUT:\n";
+	printOutput(angles, functions);
 
 	return EXIT_SUCCESS;
 }
