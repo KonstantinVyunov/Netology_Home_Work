@@ -38,11 +38,12 @@ public:
 	int operator[](int index_) { return arr[index_]; }
 
 	SmartArray& operator=(const SmartArray& rvalue) {
-		int* temp_arr = new int[this->size];
-		for (int i = 0; i < this->size; ++i) {
+		int* temp_arr = new int[rvalue.size];
+		for (int i = 0; i < rvalue.size; ++i) {
 			temp_arr[i] = rvalue.arr[i];
 		}
 		this->arr = temp_arr;
+		this->index = rvalue.size;
 		return *this;
 	}
 
@@ -53,7 +54,7 @@ public:
 
 int main(int argc, char** argv) {
 
-	SmartArray arr(5);
+	SmartArray arr(4);
 	arr.addElement(1);
 	arr.addElement(4);
 	arr.addElement(155);
@@ -68,11 +69,11 @@ int main(int argc, char** argv) {
 	std::cout << std::endl;
 	std::cout << "new_arr:";
 	SmartArray new_array(5);
-	new_array.addElement(44);
 	new_array.addElement(34);
 	new_array.addElement(44);
-	new_array.addElement(34);
-	new_array.addElement(34);
+	new_array.addElement(54);
+	new_array.addElement(64);
+	new_array.addElement(75);
 
 	for (int i = 0; i < new_array.size_arr(); ++i) {
 		std::cout.width(3);
