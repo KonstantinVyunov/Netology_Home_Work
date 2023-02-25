@@ -12,13 +12,9 @@ public:
 	}
 
 	SmartArray(const SmartArray& arr) : size(arr.size), index(arr.index) {
-		if  (this->arr != arr.arr) {	// возможен вообще такой вариант при инициализации конструктором?
-			this->arr = new int[size];
-			for (int i = 0; i < size; ++i) { // логичнее бы указать index? (почему-то WARNING выдаёт)
-				this->arr[i] = arr.arr[i];	 // ведь зачем копировать неинициализированные элементы?
-			}
-		} else {
-			throw std::exception("Object copies itself!");
+		this->arr = new int[size];
+		for (int i = 0; i < index; ++i) {
+			this->arr[i] = arr.arr[i];
 		}
 	}
 
