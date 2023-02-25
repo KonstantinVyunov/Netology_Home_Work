@@ -2,12 +2,24 @@
 
 class SmartArray {
 private:
-	int* arr;
-	size_t size = NULL;
-	int index = NULL;
+	int* arr = nullptr;
+	size_t size = 0;
+	int index = 0;
 public:
+
 	SmartArray(int num) : size(num) {
 		arr = new int[size];
+	}
+
+	SmartArray(const SmartArray& arr) : size(arr.size), index(arr.index) {
+		if  (this->arr != arr.arr) {	// возможен вообще такой вариант при инициализации конструктором?
+			this->arr = new int[size];
+			for (int i = 0; i < size; ++i) { // логичнее бы указать index? (почему-то WARNING выдаёт)
+				this->arr[i] = arr.arr[i];	 // ведь зачем копировать неинициализированные элементы?
+			}
+		} else {
+			throw std::exception("Object copies itself!");
+		}
 	}
 
 	void addElement(int num) {
@@ -21,7 +33,7 @@ public:
 	}
 
 	void deleteBackElement() {
-		if (index > NULL) {
+		if (index > 0) {
 			arr[--index] = 0;
 		} else {
 			throw std::exception("The array is empty.");
@@ -29,64 +41,60 @@ public:
 		return;
 	}
 
-	int size_arr() { return this->index; }
+	int size_arr() const { return this->index; }
 
-	int getElement(int index_) const {
-		return (index_ < size) ? (arr[index_]) : (throw std::exception("Requested index is out of range."));
+	int getElement(int index) const {
+		if ((index >= 0) && (index < this->index)) {
+			return arr[index];
+		}
+		else {
+			throw std::exception("Requested index is out of range.");
+		}
 	}
 
-	int operator[](int index_) { return arr[index_]; }
+	int operator[](int index) const {
+		return getElement(index);
+	}
 
 	SmartArray& operator=(const SmartArray& rvalue) {
+		if (this == &rvalue) { return *this; }
+
 		int* temp_arr = new int[rvalue.size];
 		for (int i = 0; i < rvalue.size; ++i) {
 			temp_arr[i] = rvalue.arr[i];
 		}
-		this->arr = temp_arr;
-		this->index = rvalue.size;
+		delete[] this->arr;				// clean arr memory before overwriting
+		std::swap(this->arr, temp_arr); // swap the ptr and simultaneously clean the temp_arr
+		this->size = rvalue.size;
+		this->index = rvalue.index;
 		return *this;
 	}
 
-	~SmartArray() {
+	virtual ~SmartArray() {
 		delete[] arr;
 	}
 };
 
 int main(int argc, char** argv) {
 
-	SmartArray arr(4);
+	SmartArray arr(6);
 	arr.addElement(1);
 	arr.addElement(4);
 	arr.addElement(155);
-	arr.addElement(200);
 
-	std::cout << "arr:\t";
-	for (int i = 0; i < arr.size_arr(); ++i) {
-		std::cout.width(3);
-		std::cout << arr[i] << '|';
+	// operator "="
+	SmartArray new_arr_1(8);
+	new_arr_1 = arr;
+	for (int i = 0; i < new_arr_1.size_arr(); ++i) {
+		std::cout << new_arr_1[i] << ' ';
 	}
 
 	std::cout << std::endl;
-	std::cout << "new_arr:";
-	SmartArray new_array(5);
-	new_array.addElement(34);
-	new_array.addElement(44);
-	new_array.addElement(54);
-	new_array.addElement(64);
-	new_array.addElement(75);
 
-	for (int i = 0; i < new_array.size_arr(); ++i) {
-		std::cout.width(3);
-		std::cout << new_array[i] << '|';
-	}
-
-	arr = new_array;
-
-	std::cout << std::endl;
-	std::cout << "arr:\t";
-	for (int i = 0; i < arr.size_arr(); ++i) {
-		std::cout.width(3);
-		std::cout << arr[i] << '|';
+	// constructor
+	SmartArray new_arr_2(arr);
+	for (int i = 0; i < new_arr_2.size_arr(); ++i) {
+		std::cout << new_arr_2[i] << ' ';
 	}
 
 	return 0;

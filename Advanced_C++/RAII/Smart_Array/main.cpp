@@ -2,13 +2,17 @@
 
 class SmartArray {
 private:
-	int* arr;
-	size_t size = NULL;
-	int index = NULL;
+	int* arr = nullptr;
+	size_t size = 0;
+	int index = 0;
 public:
-	SmartArray(int& num) : size(num) {
+	SmartArray(int num) : size(num) {
 		arr = new int[size];
 	}
+
+	SmartArray(const SmartArray&) = delete;
+	SmartArray& operator=(const SmartArray&) = delete;
+
 	void addElement(int num) {
 		if (index < size) {
 			arr[index++] = num;
@@ -19,7 +23,7 @@ public:
 	}
 
 	void deleteBackElement() {
-		if (index > NULL) {
+		if (index > 0) {
 			arr[--index] = 0;
 		} else {
 			throw std::exception("The array is empty.");
@@ -27,31 +31,37 @@ public:
 		return;
 	}
 
-	int getElement(int index_) const {
-		return (index_ < size) ? (arr[index_]) : (throw std::exception("Requested index is out of range."));
+	int getElement(int index) const {
+		if ((index >= 0) && (index < this->index)) {
+			return arr[index];
+		} else {
+			throw std::exception("Requested index is out of range.");
+		}
 	}
 
-	int operator[](int index_) {
-		return arr[index_];
+	int operator[](int index) const {
+		return getElement(index);
 	}
 
-	~SmartArray() {
+	virtual ~SmartArray() {
 		delete[] arr;
 	}
 };
 
 int main(int argc, char** argv) {
-	int num = 5;
+
 	try {
-		SmartArray smart_array(num);
+		SmartArray smart_array(5);
 		smart_array.addElement(1);
 		smart_array.addElement(4);
 		smart_array.addElement(155);
 		smart_array.addElement(14);
-		smart_array.addElement(15);
+		smart_array.addElement(28);
 
-		for (int i = 0; i < num; ++i) {
-			std::cout << smart_array.getElement(i) << ' ';
+
+		for (int i = 0; i < 5; ++i) {
+			std::cout.width(3);
+			std::cout << smart_array[i] << ' ';
 		}
 
 		std::cout << std::endl;
@@ -59,14 +69,14 @@ int main(int argc, char** argv) {
 		smart_array.deleteBackElement();
 		smart_array.deleteBackElement();
 		smart_array.deleteBackElement();
-		smart_array.deleteBackElement();
 
-		for (int i = 0; i < num; ++i) {
+		for (int i = 0; i < 5; ++i) {
+			std::cout.width(3);
 			std::cout << smart_array[i] << ' ';
 		}
 	}
 	catch (const std::exception& ex) {
-		std::cerr << "Error: " << ex.what() << std::endl;
+		std::cerr << "\nError: " << ex.what() << std::endl;
 	}
 
 	return 0;
