@@ -1,4 +1,4 @@
-// Task #3 "Удаление первого элемента из изменяемого динамического массива"
+// Task #3 "Removing the first element of a resizable dynamic array"
 
 #include <iostream>
 #include <exception>

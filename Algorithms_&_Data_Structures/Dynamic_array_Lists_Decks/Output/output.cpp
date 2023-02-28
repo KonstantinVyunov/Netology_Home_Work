@@ -1,4 +1,4 @@
-// Task #1 "¬ывод измен€емого динамического массива"
+// Task #1 "Resizable dynamic array output"
 
 #include <iostream>
 #include <exception>

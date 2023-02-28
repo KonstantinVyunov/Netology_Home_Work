@@ -1,4 +1,4 @@
-// Task #2 "ƒобавление в измен€емый динамический массив"
+// Task #2 "Adding to a resizable dynamic array"
 
 #include <iostream>
 #include <exception>
