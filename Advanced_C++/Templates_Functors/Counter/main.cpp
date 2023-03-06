@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <iostream>
-#include <numeric>
 #include <vector>
 
 std::ostream& operator<<(std::ostream& out, const std::vector<int>& i_vect) {
@@ -8,40 +7,30 @@ std::ostream& operator<<(std::ostream& out, const std::vector<int>& i_vect) {
 	return out;
 }
 
-struct Functor {
-	bool operator()(int& num) {
+class Functor {
+private:
+	int sum = 0;
+	int counter = 0;
+public:
+	void operator()(const int& num) {
 		if (num % 3 == 0) {
-			return true;
-		} else {
-			return false;
+			sum += num;
+			++counter;
 		}
 	}
+	int getSum() const { return sum; }
+	int getCount() const { return counter; }
 };
 
-int getSum(std::vector<int>& i_vect, Functor& functor) {
-	int sum = 0;
-	for ( auto& elm : i_vect) {
-		if (functor(elm)) {
-			sum += elm;
-		}
-	}
-	// IS IT POSSIBLE TO USE std::accumulate() HERE?
-	// Gives an error because of functor that i can't interpret.
-	// return std::accumulate(i_vect.begin(), i_vect.end(), 0, functor);
-	return sum;
-}
-
-int getCount(std::vector<int>& i_vect, Functor& functor) {
-	return std::count_if(i_vect.begin(), i_vect.end(), functor);
-}
-
 int main(int argc, char** argv) {
-	Functor functor{};
+	Functor functor;
 	std::vector<int> i_vect = { 4, 1, 3, 6, 25, 54 };
-	
+
+	std::for_each(i_vect.begin(), i_vect.end(), [&functor](const int& elm) { functor(elm); });
+
 	std::cout << "[IN]: " << i_vect << std::endl;
-	std::cout << "[OUT]: getSum() = " << getSum(i_vect, functor) << std::endl;
-	std::cout << "[OUT]: getCount() = " << getCount(i_vect, functor) << std::endl;
+	std::cout << "[OUT]: getSum() = " << functor.getSum() << std::endl;
+	std::cout << "[OUT]: getCount() = " << functor.getCount() << std::endl;
 
 	return 0;
 }
