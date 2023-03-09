@@ -69,27 +69,17 @@ public:
 };
 
 template<typename Type>
-Table<Type> tablet(Type a, Type b) {
-	Table<Type> tab(2, 3);
+Table<Type> tablet(Type rows, Type columns) {
+	Table<Type> tab(rows, columns);
 	return tab;
 }
 
 int main(int argc, char** argv) {
-	//Table<int> tab1(4, 4);
-
-	//tab1[1][1] = 31;
-	//Table<int> tab2(tab1);
-	//std::cout << tab2[1][1];
-
-	//tab1[2][2] = 52;
-	//Table<int> tab3 = tab1;
-	//std::cout << tab3[2][2];
-
-	auto test = tablet<int>(2, 3);
+	auto test = tablet<int>(3, 3);
 	test[1][2] = 3;
 
-	std::cout << "Get array[1][2]: " << test[1][2] << std::endl;
-	std::cout << "\t   Size: " << test.size() << std::endl;
+	std::cout << "   Get array[1][2]: " << test[1][2] << std::endl;
+	std::cout << "Overall Table Size: " << test.size() << std::endl;
 
 	return EXIT_SUCCESS;
 }
