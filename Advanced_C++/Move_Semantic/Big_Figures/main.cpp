@@ -23,11 +23,11 @@ public:
 	}
 
 	bigInteger(bigInteger&& other) noexcept
-		: vect(std::exchange(other.vect, {}))
+		: vect(std::exchange(other.vect, {})), size_(std::exchange(other.size_, 0))
 	{}
 
 	bigInteger& operator=(bigInteger&& other) noexcept {
-		std::swap(vect, other.vect);
+		std::swap((vect, size_), (other.vect, other.size_));
 		return *this;
 	}
 
@@ -129,8 +129,3 @@ int main() {
 
 	return 0;
 }
-
-//конструктор перемещения;
-//перемещающий оператор присваивания;
-//оператор сложения двух больших чисел;
-//оператор умножения на число.
