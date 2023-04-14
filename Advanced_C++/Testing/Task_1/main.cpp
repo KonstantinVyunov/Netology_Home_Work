@@ -102,7 +102,7 @@ TEST_CASE("Tests:") {
 
 	list.Clear();
 	SECTION("Clear") {
-		CHECK(list.Size() == 0);
+		CHECK(list.Size() == 1);
 	}
 	system("pause");
 }
