@@ -204,7 +204,7 @@ int main(int argc, char** argv) {
 
 		std::string query5{ "Section5.Vid" };
 		auto value5 = parcer.get_value<std::string>(query5);
-		std::cout << "Section51.Vid=" << value5 << std::endl;
+		std::cout << "Section5.Vid=" << value5 << std::endl;
 	}
 
 	catch (const std::exception& error) {
