@@ -10,6 +10,9 @@ out.txt
 # Prerequisites
 *.d
 
+# PDF
+*.pdf
+
 # Compiled Object files
 *.slo
 *.lo
