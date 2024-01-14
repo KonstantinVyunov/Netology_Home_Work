@@ -16,7 +16,7 @@ int main() {
     bool flag = true;
     std::thread([&] {
         while (flag) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(2050));
+            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
                 if (counter) {
                     std::cout << "Thread's ID: " << std::this_thread::get_id() << std::endl;
                     std::cout << "Cycles quantity: " << --counter << std::endl;
