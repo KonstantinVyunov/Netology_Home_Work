@@ -2,6 +2,8 @@
 .vs/
 .git/
 out.txt
+
+# Microsoft Visual Studio Code
 .DS_Store
 .vscode/
 
