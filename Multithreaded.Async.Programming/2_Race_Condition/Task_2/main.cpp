@@ -10,14 +10,14 @@
 std::mutex m;
 
 int main() {
-	auto handle = GetStdHandle(STD_OUTPUT_HANDLE);//избавляемся от курсора
+	auto handle = GetStdHandle(STD_OUTPUT_HANDLE);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	CONSOLE_CURSOR_INFO structCursorInfo;
 	GetConsoleCursorInfo(handle, &structCursorInfo);
 	structCursorInfo.bVisible = FALSE;
 	SetConsoleCursorInfo(handle, &structCursorInfo);
 
 	setlocale(0, "");
-	srand(time(0));//вместо длинны расчета
+	srand(time(0));//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	std::vector<std::thread> th;
 	const int kolvo_potokov = 20;
 	COORD mass[kolvo_potokov];
@@ -27,7 +27,7 @@ int main() {
 		mass[potok].Y = potok;
 		m.lock();
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), mass[potok]);
-		std::cout << "номер потока: "; Y1 std::cout << potok; W1 std::cout << "  ID потока: "; Y1 std::cout << std::this_thread::get_id() << "\t "; W1
+		std::cout << "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: "; Y1 std::cout << potok; W1 std::cout << "  ID пїЅпїЅпїЅпїЅпїЅпїЅ: "; Y1 std::cout << std::this_thread::get_id() << "\t "; W1
 			m.unlock();
 		CONSOLE_SCREEN_BUFFER_INFO x;
 		GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &x);
@@ -42,7 +42,7 @@ int main() {
 		auto end = std::chrono::steady_clock::now();
 		std::chrono::duration<double> elapsed_seconds = end - start;
 		std::lock_guard<std::mutex> g(m);
-		std::cout << " Время расчета: " << " "; R1 std::cout << elapsed_seconds.count() << "s\t"; W1
+		std::cout << " пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << " "; R1 std::cout << elapsed_seconds.count() << "s\t"; W1
 		};
 	for (int i = 0; i < kolvo_potokov; ++i)
 		th.emplace_back(func, i, 5 + rand() % 10);
