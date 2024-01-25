@@ -54,7 +54,7 @@ group by И.исполн, Т.время_трэка
 having Т.время_трэка = (select min(время_трэка) from ТРЭК)
 order by И.исполн;
 
-select distinct А.назв_альб from АЛЬБОМ as А --все кроме а_жуки и а_баста
+select distinct А.назв_альб from АЛЬБОМ as А
 left join ТРЭК as Т on Т.id_альбом = А.id
 where Т.id_альбом in (
     select id_альбом
@@ -69,7 +69,3 @@ where Т.id_альбом in (
     )
 )
 order by А.назв_альб
-
-
-
-

@@ -1,10 +1,3 @@
---сброс SERIAL если колонки сязаны
---truncate ТРЭК_СБОР, ТРЭК restart identity
---сброс SERIAL если колонки не сязаны
---truncate  ЖАНР  someTable restart  identity; 
-
-
-
 insert into ЖАНР (назв_жанра) values ('Поп');
 insert into ЖАНР (назв_жанра) values ('Рок');
 insert into ЖАНР (назв_жанра) values ('Рэп');
@@ -138,6 +131,3 @@ insert into "ТРЭК_СБОР"  (id, id_сбор , id_трэк) values (21,7,12
 insert into "ТРЭК_СБОР"  (id, id_сбор , id_трэк) values (22,8,10);
 insert into "ТРЭК_СБОР"  (id, id_сбор , id_трэк) values (23,8,3);
 insert into "ТРЭК_СБОР"  (id, id_сбор , id_трэк) values (24,8,1);
-
-
-
