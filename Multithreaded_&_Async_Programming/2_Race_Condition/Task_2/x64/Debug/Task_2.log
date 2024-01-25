@@ -1,0 +1,3 @@
+﻿  main.cpp
+E:\Netology\Multithreaded_&_Async_Programming\2_Race_Condition\Task_2\main.cpp(18,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Task_2.vcxproj -> E:\Netology\Multithreaded_&_Async_Programming\2_Race_Condition\x64\Debug\Task_2.exe
