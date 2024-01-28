@@ -1,6 +1,6 @@
-﻿#include<iostream>
-#include<iomanip>
-#include<exception>
+﻿#include <iostream>
+#include <iomanip>
+#include <exception>
 #include <pqxx/pqxx>
 
 class BD {
@@ -138,5 +138,5 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-
+	return EXIT_SUCCESS;
 }
